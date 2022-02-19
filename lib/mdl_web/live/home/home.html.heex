@@ -1,0 +1,13 @@
+<div class="w-full h-full flex text-white">
+    <div id="home-nav" class="shrink-0 h-full w-14 bg-neutral-800 flex flex-col justify-between items-center">
+        <button phx-click="change_component" phx-value-component="biography" class={nav_button_class("biography", @active_component)}><FontAwesome.LiveView.icon name="address-card" type="solid" class="w-10 h-10 mx-auto"/></button>
+        <button phx-click="change_component" phx-value-component="skills" class={nav_button_class("skills", @active_component)}><FontAwesome.LiveView.icon name="clipboard-list" type="solid" class="w-10 h-10 mx-auto"/></button>
+        <button phx-click="change_component" phx-value-component="experience" class={nav_button_class("experience", @active_component)}><FontAwesome.LiveView.icon name="briefcase" type="solid" class="w-10 h-10 mx-auto"/></button>
+        <button phx-click="change_component" phx-value-component="education" class={nav_button_class("education", @active_component)}><FontAwesome.LiveView.icon name="graduation-cap" type="solid" class="w-10 h-10 mx-auto"/></button>
+        <%# <button phx-click="change_component" phx-value-component="projects" class={nav_button_class("projects", @active_component)}><FontAwesome.LiveView.icon name="project-diagram" type="solid" class="w-10 h-10 mx-auto"/></button> %>
+    </div>
+    <div class="grow relative" id="home-container">
+        <canvas phx-hook="BGCanvas" id="bg_canvas" class="absolute w-full h-full"/>
+        <.live_component module={render_component(@active_component)} id={@active_component}} />
+    </div>
+</div>

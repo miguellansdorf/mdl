@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.section {
+    @apply relative w-full h-full flex justify-center items-center bg-black/10;
+}
+
+progress::-moz-progress-bar { @apply bg-orange-600 }
+progress::-webkit-progress-value { @apply bg-orange-600}
