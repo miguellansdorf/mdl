@@ -5,6 +5,7 @@ defmodule MdlWeb.Home.Education do
     %{"year" => "2017-2020",
       "data" => %{
         school: "Beijing University of Aeronautics and Astronautics",
+        city: "Beijing, China",
         major: "Electronic Information Engineering",
         title: "Master of Science",
         achievements: [
@@ -16,6 +17,7 @@ defmodule MdlWeb.Home.Education do
     %{"year" => "2010-2014",
       "data" => %{
         school: "Anton De Kom University",
+        city: "Paramaribo, Suriname",
         major: "Electrical Engineering",
         title: "Bachelor of Science",
         achievements: []
@@ -27,24 +29,26 @@ defmodule MdlWeb.Home.Education do
     education = @data
     ~H"""
     <section id="education" class="section">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[70%]">
-        <h1 class="text-center text-2xl md:text-6xl text-orange-600 mb-8">Education</h1>
+      <div class="w-full h-full flex flex-col gap-2 overflow-auto mx-4">
+        <h1 class="mt-4 text-center text-4xl text-orange-600">Education</h1>
         <%= for %{"year" => year, "data" => data} <- education do %>
-          <div class="flex gap-2 md:gap-10">
-            <h1 class="text-lg md:text-4xl text-orange-600 w-25 md:w-40 flex-shrink-0"><%= year %></h1>
-            <div class="flex flex-col gap-1 flex-grow">
-              <h1 class="text-lg md:text-2xl text-orange-600"><%= data.school %></h1>
-              <h2 class="text-md md:text-xl italic"><%= "#{data.title} in #{data.major}" %></h2>
-              <ul class="list-disc marker:text-orange-600">
-                <%= for achievement <- data.achievements do %>
-                  <li class="text-sm md:text-lg">
-                    <%= if achievement.type == "link" do %>
-                      <a class="text-orange-600" href={achievement.url} target="_blank"><%= achievement.text %></a>
-                    <% else %>
-                      <%= achievement.text %>
-                    <% end %>
-                  </li>
-                <% end %>
+          <div class="w-full lg:w-4/5 mx-auto bg-neutral-800 rounded-lg flex flex-col">
+            <div class="flex flex-col justify-between bg-neutral-700 text-orange-600 rounded-t-lg text-xl px-2">
+              <h1 class=""><%= year %></h1>
+              <h1 class="self-end"><%= data.school %> <%= data.city %></h1>
+            </div>
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xl italic text-orange-600"><%= "#{data.title} in #{data.major}" %></h2>
+              <ul class="list-disc list-inside marker:text-orange-600">
+              <%= for achievement <- data.achievements do %>
+                <li class="text-sm md:text-lg">
+                  <%= if achievement.type == "link" do %>
+                    <a class="text-orange-600" href={achievement.url} target="_blank"><%= achievement.text %></a>
+                  <% else %>
+                    <%= achievement.text %>
+                  <% end %>
+                </li>
+              <% end %>
               </ul>
             </div>
           </div>

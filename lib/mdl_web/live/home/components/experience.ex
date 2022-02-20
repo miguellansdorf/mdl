@@ -34,26 +34,24 @@ defmodule MdlWeb.Home.Experience do
     experience = @data
     ~H"""
     <section id="experience" class="section">
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[70%]">
-        <h1 class="text-center text-2xl md:text-6xl text-orange-600 mb-8">Professional Experience</h1>
-        <div class="w-full snap-x snap-mandatory overflow-x-auto flex items-center">
-          <%= for %{"year" => year, "data" => data} <- experience do %>
-            <div class="w-full h-full flex-shrink-0 snap-center">
-              <div class="flex flex-col gap-2 md:flex-row md:gap-10">
-                <h1 class="text-lg md:text-4xl text-orange-600 w-25 md:w-40 flex-shrink-0"><%= year %></h1>
-                <div class="flex flex-col gap-1 flex-grow">
-                  <h1 class="text-lg md:text-2xl text-orange-600"><%= data.company %> <%= data.city %></h1>
-                  <h2 class="text-md md:text-xl italic"><%= data.position %></h2>
-                  <ul class="list-disc marker:text-orange-600 w-[90%] mx-auto md:w-full">
-                    <%= for detail <- data.details do %>
-                      <li class="text-sm md:text-lg"><%= detail %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
+      <div class="w-full h-full flex flex-col gap-2 overflow-auto mx-4">
+        <h1 class="mt-4 text-center text-4xl text-orange-600">Professional Experience</h1>
+        <%= for %{"year" => year, "data" => data} <- experience do %>
+          <div class="w-full lg:w-4/5 mx-auto bg-neutral-800 rounded-lg flex flex-col">
+            <div class="flex flex-col justify-between bg-neutral-700 text-orange-600 rounded-t-lg text-xl px-2">
+              <h1 class=""><%= year %></h1>
+              <h1 class="self-end"><%= data.company %> <%= data.city %></h1>
             </div>
-          <% end %>
-        </div>
+            <div class="flex flex-col gap-4">
+              <h2 class="text-xl italic text-orange-600"><%= data.position %></h2>
+              <ul class="list-disc list-inside marker:text-orange-600">
+                <%= for detail <- data.details do %>
+                  <li class="text-lg"><%= detail %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
       </div>
     </section>
     """
