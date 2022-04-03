@@ -2,7 +2,7 @@ defmodule MdlWeb.Home.Experience do
   use MdlWeb, :live_component
 
   @data [
-    %{"year" => "2020-Now",
+    %{"year" => "2020-2022",
       "data" => %{
         company: "Beijing Chaobo Interactive Network Technology Co., Ltd.",
         city: "Beijing, China",
